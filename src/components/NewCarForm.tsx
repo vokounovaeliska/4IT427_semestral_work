@@ -1,6 +1,7 @@
 import { createCar } from '@/utils/actions'
 import { Brand, CarModel } from '@prisma/client'
 import BrandAndModelFormFields from './BrandAndModelFormFields'
+import OtherCarFormFields from './OtherCarFormFields'
 
 const NewCarForm = ({
   models,
@@ -11,10 +12,11 @@ const NewCarForm = ({
 }) => {
   return (
     <div>
-      <form action={createCar} className="flex flex-col">
-        <BrandAndModelFormFields models={models} brands={brands} />
-        <input type="text" name="description" required={true} />
-        <button type="submit">submit</button>
+      <form action={createCar} className="flex flex-col rounded-md px-10 py-5 shadow-sm shadow-gray-400">
+        <BrandAndModelFormFields models={models} brands={brands} refreshedParams={{brandId: "", modelId: "",  location: ""}} />
+     
+        <OtherCarFormFields/>
+        <button className="btn mt-4" type="submit">submit</button>
       </form>
     </div>
   )
