@@ -32,6 +32,9 @@ const BrandAndModelFormFields = ({
             setBrandId(e.target.value)
           }}
         >
+          <option key={''} value={''}>
+            -
+          </option>
           {brands.map((brand) => (
             <option key={brand.id} value={brand.id}>
               {brand.name}
@@ -46,6 +49,9 @@ const BrandAndModelFormFields = ({
           defaultValue={refreshedParams?.model || ''}
           name="model"
         >
+          <option key={''} value={''}>
+            -
+          </option>
           {filteredModels.map((model) => (
             <option key={model.id} value={model.id}>
               {model.name}
