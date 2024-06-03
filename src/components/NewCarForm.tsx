@@ -11,11 +11,20 @@ const NewCarForm = ({
   brands: Brand[]
 }) => {
   return (
-    <div>
-      <form action={createCar} className="flex flex-col rounded-md px-10 py-5 shadow-sm shadow-gray-400">
-        <BrandAndModelFormFields models={models} brands={brands} refreshedParams={{brand: "", model: ""}} />
-        <OtherCarFormFields/>
-        <button className="btn mt-4" type="submit">submit</button>
+    <div className="container mx-auto p-8 bg-white rounded-md shadow-md">
+      <form action={createCar} className="flex flex-col space-y-4 items-center">
+        <BrandAndModelFormFields
+          models={models}
+          brands={brands}
+          refreshedParams={{ brand: '', model: '' }}
+        />
+        <OtherCarFormFields />
+        <button
+          className="btn bg-blue-500 text-white font-semibold rounded-md py-2 hover:bg-blue-600 transition duration-200 lg:w-1/2"
+          type="submit"
+        >
+          Submit
+        </button>
       </form>
     </div>
   )
