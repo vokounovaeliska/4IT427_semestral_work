@@ -1,6 +1,7 @@
 import CarList from '@/components/CarList'
 import CarSearchForm from '@/components/CarSearchForm'
 import prisma from '@/utils/prisma'
+import Link from 'next/link'
 
 
 const getCars = async () => {
@@ -51,9 +52,9 @@ const HomePage = async ({
   return (
     <div>
       Home Page
-      { <CarSearchForm brands={brands} models={models} />
-      }
+       <CarSearchForm brands={brands} models={models} />
       <CarList cars={filteredCars} brands={brands} models={models}/>
+      <Link    href={"/car/new"}> Add new car </Link>
     </div>
   )
 }

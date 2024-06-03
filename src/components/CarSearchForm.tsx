@@ -20,27 +20,34 @@ function handleFormSubmit(e: React.FormEvent<HTMLFormElement>) {
     const formData = new FormData(e.currentTarget);
     const obj = {
       location: formData.get("location")?.toString() ?? "",
-      brandId: formData.get("brandId")?.toString() ?? "",
-      modelId: formData.get("modelId")?.toString() ?? "",
+      brand: formData.get("brand")?.toString() ?? "",
+      model: formData.get("model")?.toString() ?? "",
     };
 
     router.push(
-        `?location=${obj.location}&brandId=${obj.brandId}&modelId=${obj.modelId}`
+        `?location=${obj.location}&brand=${obj.brand}&model=${obj.model}`
       )
   }
 
+  const handleClear = () => {
+    router.push('/')
+  };
+
   const objectsRefreshed = {
     location: searchParams.get("location"),
-    brandId: searchParams.get("brandId"),
-    modelId: searchParams.get("modelId"),
+    brand: searchParams.get("brand"),
+    model: searchParams.get("model"),
 }
 
   return (
     <div>
       <form className="flex flex-col"  onSubmit={handleFormSubmit}>
-        <BrandAndModelFormFields models={models} brands={brands} refreshedParams={{brandId: objectsRefreshed.brandId || "",
-         modelId: objectsRefreshed.modelId || "",  location: objectsRefreshed.location || ""}} />
-        <button type="submit">submit</button>
+        <BrandAndModelFormFields models={models} brands={brands} refreshedParams={{brand: objectsRefreshed.brand || "",
+         model: objectsRefreshed.model || ""}} />
+         <label htmlFor="locationId">Location</label>
+         <input id='locationId' type="text" name="location" defaultValue={objectsRefreshed?.location || ""} className="form-field"/>
+        <button type="submit">Filter</button>
+        <button onClick={handleClear} type="button">Clear</button>
       </form>
     </div>
   )

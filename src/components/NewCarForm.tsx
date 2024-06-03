@@ -13,8 +13,7 @@ const NewCarForm = ({
   return (
     <div>
       <form action={createCar} className="flex flex-col rounded-md px-10 py-5 shadow-sm shadow-gray-400">
-        <BrandAndModelFormFields models={models} brands={brands} refreshedParams={{brandId: "", modelId: "",  location: ""}} />
-     
+        <BrandAndModelFormFields models={models} brands={brands} refreshedParams={{brand: "", model: ""}} />
         <OtherCarFormFields/>
         <button className="btn mt-4" type="submit">submit</button>
       </form>

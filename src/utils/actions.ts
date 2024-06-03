@@ -4,8 +4,8 @@ import { redirect } from 'next/navigation'
 import prisma from './prisma'
 
 export const createCar = async (formData: FormData) => {
-  const modelId = formData.get('modelId')?.toString()
-  const brandId = formData.get('brandId')?.toString()
+  const modelId = formData.get('model')?.toString()
+  const brandId = formData.get('brand')?.toString()
   const description = formData.get('description')?.toString()
   const color = formData.get('color')?.toString()
   const location = formData.get('location')?.toString()

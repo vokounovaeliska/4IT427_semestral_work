@@ -1,7 +1,6 @@
 'use client'
 import { Brand, CarModel } from '@prisma/client'
 import { Fragment, useMemo, useState } from 'react'
-import OtherCarFormFields from './OtherCarFormFields'
 
 const BrandAndModelFormFields = ({
   models,
@@ -10,26 +9,24 @@ const BrandAndModelFormFields = ({
 }: {
   models: CarModel[]
   brands: Brand[]
-  refreshedParams:{
-    location: string,
-    brandId: string,
-    modelId: string
+  refreshedParams?:{
+    brand: string
+    model: string
   },
 }) => {
-  const [brandId, setBrandId] = useState(refreshedParams?.brandId || "")
+  const [brandId, setBrandId] = useState(refreshedParams?.brand || "")
 
   const filteredModels = useMemo(() => {
     return models.filter((model) => model.brandId === brandId)
   }, [brandId, models])
   return (
     <Fragment>
-      <label htmlFor="brand">Brand</label>
+      <label >Brand</label>
       <select
        className="form-field"
-        name="brandId"
-        required={true}
-        id=""
-        value={refreshedParams?.brandId}
+       id='brandId'
+       name='brand'
+        defaultValue={refreshedParams?.brand || ""}
         onChange={(e) => {
           setBrandId(e.target.value)
         }}
@@ -40,8 +37,8 @@ const BrandAndModelFormFields = ({
           </option>
         ))}
       </select>
-      <label htmlFor="modelId">Model</label>
-      <select name="modelId"  className="form-field" required={true} value={refreshedParams?.modelId}>
+      <label >Model</label>
+      <select className="form-field" defaultValue={refreshedParams?.model || ""} name='model'>
         {filteredModels.map((model) => (
           <option key={model.id} value={model.id}>
             {model.name}
